@@ -1,22 +1,56 @@
-# StrangerDB OPS-CONSOLE v4.2
+# StrangerDB CONSOLE
 
-**Demo Video:** [https://drive.google.com/file/d/1vQW4BlJjeacLWwvkL0_U6LsTllZbJItZ/view?usp=sharing](https://drive.google.com/file/d/1vQW4BlJjeacLWwvkL0_U6LsTllZbJItZ/view?usp=sharing)
+**Demo Video:**  
+https://drive.google.com/file/d/1vQW4BlJjeacLWwvkL0_U6LsTllZbJItZ/view?usp=sharing
 
 ---
 
 ## Overview
 
-**HNL OPS-CONSOLE v4.2** — an interactive terminal-based operations console for the fictional Hawkins National Lab's Interdimensional Anomaly Monitoring System.
+**StrangerDB OPS-CONSOLE v4.2** is an interactive, terminal-based operations console built for a fictional **Hawkins National Laboratory (HNL)** anomaly monitoring system.
 
-This console connects to a MySQL database (`strangerdb`) and provides:
+The application connects to a MySQL database (`strangerdb`) and provides a unified interface for **analytics, operations, and data management** over a complex relational schema modeling interdimensional events, entities, portals, artifacts, and personnel.
 
-- **Analytic Dashboards**: Portal stability, entity threat analysis, reality disturbance maps, psychic activity profiles, temporal breach timelines
-- **CRUD Operations**: Full create, read, update, delete capabilities for Events, Persons, Artifacts, Entities, Portals, Reports, Experiments
-- **Relationship Management**: Link/unlink entities to events, artifacts to events, add/remove victims to events
-- **Record Archiving**: Soft-delete functionality with reason tracking
-- **Threat Assessment**: Real-time Dimensional Threat Score (DTS) computation
+The system is implemented in **Python** using `PyMySQL` for database connectivity and is designed to emphasize **schema design, query correctness, relational integrity, and operational workflows** rather than UI complexity.
 
-The application is implemented in Python (`main_app.py`) using `PyMySQL` for database connectivity.
+---
+
+## Key Capabilities
+
+### Analytics & Dashboards
+- Portal stability and breach tracking
+- Entity threat analysis and profiling
+- Reality disturbance mapping
+- Psychic activity monitoring
+- Temporal event timelines
+
+### Data Management
+- Full CRUD operations for:
+  - Events
+  - Persons
+  - Entities
+  - Artifacts
+  - Portals
+  - Reports
+  - Experiments
+- Relationship management across M:N junction tables
+- Soft-delete (archiving) with reason tracking
+- Hard deletes for selected entities where appropriate
+
+### Operational Logic
+- Real-time computation of a **Dimensional Threat Score (DTS)**
+- Referential integrity enforced via foreign keys and constraints
+- Multi-entity updates through guided CLI workflows
+
+---
+
+## Technology Stack
+
+- **Language:** Python 3.8+
+- **Database:** MySQL 5.7+ / MariaDB 10.3+
+- **Connector:** PyMySQL
+- **Interface:** Terminal-based interactive CLI
+- **Dataset:** Synthetic but realistic, large-scale relational data
 
 ---
 
@@ -405,15 +439,21 @@ python main_app.py
 
 ---
 
-## Submission Checklist (Phase 4 Requirements)
+## Limitations
 
-- ✅ **README.md** — This file with setup, usage, and demo instructions
-- ✅ **src/schema.sql** — Database creation script (creates strangerdb and all 25 tables)
-- ✅ **src/populate.sql** — Sample data with 100+ events, 500+ sightings, and more
-- ✅ **src/main_app.py** — Python CLI application with full CRUD + analytics
-- ✅ **requirements.txt** — Python dependencies manifest
-- ✅ **team_56.mp4** — 5-minute video demonstrating Terminal A and Terminal B (before/after updates)(link at the start of readme.md)
-- ✅ **phase3.pdf** — Phase 3 report (design & schema documentation)
+- The application uses a **single-node MySQL deployment** and does not address replication, sharding, or distributed database concerns.
+- Authentication relies on **database credentials only**; no role-based access control is implemented at the application layer.
+- The CLI interface is intentionally minimal and does not include pagination, autocomplete, or rich visualization.
+- Analytics are computed **on-demand** and are not pre-aggregated or cached.
+- Concurrency control relies on MySQL’s default isolation mechanisms; no explicit transaction orchestration or locking strategies are implemented in the application layer.
+- The system is designed for **educational and evaluative use**, not as a production-ready operations console.
 
+## Conclusion
+
+StrangerDB demonstrates a complete, end-to-end approach to relational database–backed system design, combining schema modeling, query logic, and operational workflows within a single interactive application. By focusing on correctness, traceability, and data integrity, the project highlights how thoughtful schema design and disciplined SQL usage directly shape application behavior.
+
+The console’s analytics, CRUD operations, and relationship management illustrate practical challenges such as maintaining referential integrity, handling historical data through soft deletes, and computing derived metrics from normalized data. The two-terminal demo workflow further emphasizes transparency and verifiability, reinforcing best practices for debugging and validating database-driven systems.
+
+Overall, this project serves as a strong foundation for reasoning about backend systems, database design, and operational tooling, and provides a solid basis for further extensions such as access control, performance optimization, and scalable deployment architectures.
 ---
 
